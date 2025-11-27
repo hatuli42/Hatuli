@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>העמוד של חתולי ⭐</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- הגדרת משתנים (צבעים) --- */
+        :root {
+            /* מצב בהיר - צבעים מקוריים */
+            --bg-color: #F9D39F; /* כתום רך בהיר */
+            --text-color: #333333;
+            --heading-color: #000000;
+            --accent-color: #FFD700; /* זהב לכוכבים */
+            --toggle-btn-color: #333;
+        }
+
+        /* מצב כהה - סכמת צבעים הפוכה/משלימה ("נגטיב") */
+        body.dark-mode {
+            --bg-color: #1a1a2e; /* כחול עמוק כהה */
+            --text-color: #e0e0e0;
+            --heading-color: #ffffff;
+            --accent-color: #FFD700;
+            --toggle-btn-color: #FFD700; /* שמש צהובה */
+        }
+
+        /* --- עיצוב כללי --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Rubik', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.4s ease, color 0.4s ease;
+            line-height: 1.6;
+            padding-bottom: 50px;
+            text-align: center;
+        }
+
+        /* סרגל עליון (כפתור מצב כהה בלבד) */
+        .top-bar {
+            display: flex;
+            justify-content: flex-start; /* מיקום הכפתור בפינה הימנית העליונה (בגלל RTL) */
+            padding: 15px 25px;
+        }
+
+        /* כפתור החלפת מצב */
+        #theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--toggle-btn-color);
+            font-size: 1.5rem;
+            padding: 5px;
+            transition: transform 0.3s ease;
+        }
+        
+        #theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* קונטיינר מרכזי */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* תמונת הבובה */
+        .puppet-image {
+            max-width: 300px;
+            width: 100%;
+            height: auto;
+            margin: 10px auto 20px; 
+            display: block;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2));
+            transition: filter 0.4s ease; /* הוספת מעבר חלק גם לצל */
+        }
+        
+        body.dark-mode .puppet-image {
+             filter: drop-shadow(0 10px 20px rgba(255,255,255,0.15));
+        }
+
+        /* כותרות */
+        h1 {
+            color: var(--heading-color);
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 {
+            color: var(--heading-color);
+            font-size: 1.5rem;
+            font-weight: normal;
+            margin-bottom: 40px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .star-icon {
+            color: var(--accent-color);
+        }
+
+        /* תוכן טקסט */
+        .content-text {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: right; /* יישור הטקסט לימין */
+        }
+
+        .content-text p {
+            margin-bottom: 1.5em; /* הוספת רווח בין פסקאות */
+        }
+
+        .call-to-action {
+            font-weight: 700;
+            margin-top: 40px;
+            font-size: 1.2rem;
+            color: var(--text-color); /* לוודא שהצבע משתנה גם כאן */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <button id="theme-toggle" aria-label="החלף מצב תצוגה">
+             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+    </div>
+
+    <div class="container">
+        <img src="puppet.png" alt="הבובה האדומה של חתולי" class="puppet-image">
+
+        <h1>
+            <span class="star-icon">⭐</span>
+            ברוכים הבאים
+            <span class="star-icon">⭐</span>
+        </h1>
+        <h2>
+            <span class="star-icon">🎓</span>
+            לעמוד של חתולי
+            <span class="star-icon">🎓</span>
+        </h2>
+
+        <div class="content-text">
+            <p>העמוד נועד כדי להנגיש בעברית את ההתפתחויות והחידושים בעולם הטכנולוגיה והבינה המלאכותית.</p>
+            
+            <p>כל כמה ימים אני מעלה לסטורי מקור לקריאה עם פסקה קצרה שמתרגמת ומסכמת איזשהו חידוש. מי שפספס ורוצה להשלים פערים, יוכל לעשות זאת בזכות ההיילייטס, שבהם אני שומר את כל הידיעות שעולות לסטורי גם אחרי שהן נמחקות (מחולק לשנים 2024, 2025).</p>
+            
+            <p>בעמוד תוכלו גם למצוא אתרים חינמיים נוחים ומומלצים לשימוש שניסיתי ואהבתי. כדי להיכנס אליהם כל מה שנדרש הוא לכתוב בגוגל את שם האתר שמופיע בתחילת הפוסט שקראתם, להירשם בכניסה לאתר עם חשבון גוגל (חשבון לספאם, לא חשבון לכולם), ואחר כך ישר אפשר כבר להשתמש.</p>
+        </div>
+
+        <p class="call-to-action">
+            שימו עוקב עכשיו ותשמרו לאחר כך, וכמובן גם תשלחו לחברים. 📦
+        </p>
+    </div>
+
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        // הגדרת האייקונים (SVG)
+        const moonIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>';
+        const sunIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>';
+
+        // פונקציה להפעלת מצב כהה ושמירת העדפה
+        function setDarkMode() {
+            body.classList.add('dark-mode');
+            themeToggleBtn.innerHTML = sunIcon;
+            localStorage.setItem('theme', 'dark');
+        }
+
+        // פונקציה להפעלת מצב בהיר ושמירת העדפה
+        function setLightMode() {
+            body.classList.remove('dark-mode');
+            themeToggleBtn.innerHTML = moonIcon;
+            localStorage.setItem('theme', 'light');
+        }
+
+        // בדיקה בהעמסת הדף
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'dark') {
+            setDarkMode();
+        } else {
+             // הגדרת מצב בהיר כברירת מחדל אם אין העדפה שמורה
+            setLightMode();
+        }
+
+        // האזנה ללחיצה על הכפתור
+        themeToggleBtn.addEventListener('click', () => {
+            if (body.classList.contains('dark-mode')) {
+                setLightMode();
+            } else {
+                setDarkMode();
+            }
+        });
+    </script>
+</body>
+</html>
