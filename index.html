@@ -8,21 +8,21 @@
     <style>
         /* --- הגדרת משתנים (צבעים) --- */
         :root {
-            /* מצב בהיר - צבעים מקוריים */
+            /* מצב בהיר */
             --bg-color: #F9D39F; /* כתום רך בהיר */
             --text-color: #333333;
             --heading-color: #000000;
-            --accent-color: #FFD700; /* זהב לכוכבים */
+            --accent-color: #FFD700; 
             --toggle-btn-color: #333;
         }
 
-        /* מצב כהה - סכמת צבעים הפוכה/משלימה ("נגטיב") */
+        /* מצב כהה */
         body.dark-mode {
             --bg-color: #1a1a2e; /* כחול עמוק כהה */
             --text-color: #e0e0e0;
             --heading-color: #ffffff;
             --accent-color: #FFD700;
-            --toggle-btn-color: #FFD700; /* שמש צהובה */
+            --toggle-btn-color: #FFD700;
         }
 
         /* --- עיצוב כללי --- */
@@ -39,13 +39,12 @@
             transition: background-color 0.4s ease, color 0.4s ease;
             line-height: 1.6;
             padding-bottom: 50px;
-            text-align: center;
+            text-align: center; /* רקורז כברירת מחדל כדי למרכז כותרות */
         }
 
-        /* סרגל עליון (כפתור מצב כהה בלבד) */
         .top-bar {
             display: flex;
-            justify-content: flex-start; /* מיקום הכפתור בפינה הימנית העליונה (בגלל RTL) */
+            justify-content: flex-start;
             padding: 15px 25px;
         }
 
@@ -79,14 +78,14 @@
             margin: 10px auto 20px; 
             display: block;
             filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2));
-            transition: filter 0.4s ease; /* הוספת מעבר חלק גם לצל */
+            transition: filter 0.4s ease; 
         }
         
         body.dark-mode .puppet-image {
              filter: drop-shadow(0 10px 20px rgba(255,255,255,0.15));
         }
 
-        /* כותרות */
+        /* כותרות - נשארות במרכז כפי שביקשת */
         h1 {
             color: var(--heading-color);
             font-size: 2.2rem;
@@ -110,25 +109,25 @@
             color: var(--accent-color);
         }
 
-        /* תוכן טקסט */
+        /* גוף הטקסט - מיושר לצדדים (לימין) כפי שביקשת */
         .content-text {
             font-size: 1.1rem;
             margin-bottom: 25px;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
-            text-align: right; /* יישור הטקסט לימין */
+            text-align: right; 
         }
 
         .content-text p {
-            margin-bottom: 1.5em; /* הוספת רווח בין פסקאות */
+            margin-bottom: 1.5em; 
         }
 
         .call-to-action {
             font-weight: 700;
             margin-top: 40px;
             font-size: 1.2rem;
-            color: var(--text-color); /* לוודא שהצבע משתנה גם כאן */
+            color: var(--text-color); 
         }
     </style>
 </head>
@@ -136,12 +135,12 @@
 
     <div class="top-bar">
         <button id="theme-toggle" aria-label="החלף מצב תצוגה">
-             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
         </button>
     </div>
 
     <div class="container">
-        <img src="7777" alt="7777" class="puppet-image">
+        <img id="puppet-image" src="7777.jpg" alt="הבובה האדומה של חתולי" class="puppet-image">
 
         <h1>
             <span class="star-icon">⭐</span>
@@ -168,37 +167,31 @@
     </div>
 
     <script>
+        // --- פונקציונליות מצב כהה ---
         const themeToggleBtn = document.getElementById('theme-toggle');
         const body = document.body;
-
-        // הגדרת האייקונים (SVG)
         const moonIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>';
         const sunIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>';
 
-        // פונקציה להפעלת מצב כהה ושמירת העדפה
         function setDarkMode() {
             body.classList.add('dark-mode');
             themeToggleBtn.innerHTML = sunIcon;
             localStorage.setItem('theme', 'dark');
         }
 
-        // פונקציה להפעלת מצב בהיר ושמירת העדפה
         function setLightMode() {
             body.classList.remove('dark-mode');
             themeToggleBtn.innerHTML = moonIcon;
             localStorage.setItem('theme', 'light');
         }
 
-        // בדיקה בהעמסת הדף
         const currentTheme = localStorage.getItem('theme');
         if (currentTheme === 'dark') {
             setDarkMode();
         } else {
-             // הגדרת מצב בהיר כברירת מחדל אם אין העדפה שמורה
             setLightMode();
         }
 
-        // האזנה ללחיצה על הכפתור
         themeToggleBtn.addEventListener('click', () => {
             if (body.classList.contains('dark-mode')) {
                 setLightMode();
@@ -206,6 +199,29 @@
                 setDarkMode();
             }
         });
+
+        // --- פונקציונליות החלפת תמונות ---
+        const puppetImage = document.getElementById('puppet-image');
+        const initialImage = '7777.jpg';
+        const flickerImage = '7777 - Copy.jpg';
+        const initialDelay = 15000; // 15 שניות
+        const flickerDuration = 200; // 0.2 שניות
+
+        function startFlickerEffect() {
+            // החלף לתמונת הריצוד
+            puppetImage.src = flickerImage;
+
+            // החזר לתמונה המקורית לאחר 0.2 שניות
+            setTimeout(() => {
+                puppetImage.src = initialImage;
+                // כדי שהאפקט יחזור על עצמו, קרא לפונקציה שוב לאחר השהייה ארוכה יותר
+                setTimeout(startFlickerEffect, 120000); // חוזר על עצמו כל 2 דקות
+            }, flickerDuration);
+        }
+
+        // הפעל את האפקט בפעם הראשונה לאחר ההשהייה הראשונית
+        setTimeout(startFlickerEffect, initialDelay);
+
     </script>
 </body>
 </html>
