@@ -6,26 +6,24 @@
     <title>העמוד של חתולי ⭐</title>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        /* --- הגדרת משתנים (צבעים) --- */
         :root {
             /* מצב בהיר */
-            --bg-color: #F9D39F; /* כתום רך בהיר */
+            --bg-color: #F9D39F;
             --text-color: #333333;
             --heading-color: #000000;
-            --accent-color: #FFD700; 
+            --accent-color: #FFD700;
             --toggle-btn-color: #333;
         }
 
-        /* מצב כהה */
         body.dark-mode {
-            --bg-color: #1a1a2e; /* כחול עמוק כהה */
+            /* מצב כהה */
+            --bg-color: #1a1a2e;
             --text-color: #e0e0e0;
             --heading-color: #ffffff;
             --accent-color: #FFD700;
             --toggle-btn-color: #FFD700;
         }
 
-        /* --- עיצוב כללי --- */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -39,7 +37,7 @@
             transition: background-color 0.4s ease, color 0.4s ease;
             line-height: 1.6;
             padding-bottom: 50px;
-            text-align: center; /* רקורז כברירת מחדל כדי למרכז כותרות */
+            text-align: center;
         }
 
         .top-bar {
@@ -48,7 +46,6 @@
             padding: 15px 25px;
         }
 
-        /* כפתור החלפת מצב */
         #theme-toggle {
             background: none;
             border: none;
@@ -58,76 +55,95 @@
             padding: 5px;
             transition: transform 0.3s ease;
         }
-        
+
         #theme-toggle:hover {
             transform: scale(1.1);
         }
 
-        /* קונטיינר מרכזי */
         .container {
             max-width: 800px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 20px 20px 40px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.35);
+            backdrop-filter: blur(6px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.18);
         }
 
-        /* תמונת הבובה */
+        body.dark-mode .container {
+            background: rgba(15, 15, 35, 0.8);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+        }
+
+        /* תמונת הבובה בראש העמוד */
         .puppet-image {
-            max-width: 300px;
+            max-width: 320px;
             width: 100%;
             height: auto;
-            margin: 10px auto 20px; 
+            margin: 0 auto 20px;
             display: block;
-            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2));
-            transition: filter 0.4s ease; 
-        }
-        
-        body.dark-mode .puppet-image {
-             filter: drop-shadow(0 10px 20px rgba(255,255,255,0.15));
+            border-radius: 18px;
+            object-fit: cover;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.25));
+            transition: transform 0.35s ease, filter 0.35s ease;
         }
 
-        /* כותרות - נשארות במרכז כפי שביקשת */
+        .puppet-image:hover {
+            transform: translateY(-4px) scale(1.02);
+            filter: drop-shadow(0 12px 18px rgba(0,0,0,0.3));
+        }
+
+        body.dark-mode .puppet-image {
+            filter: drop-shadow(0 10px 20px rgba(255,255,255,0.12));
+        }
+
+        /* כותרות ממורכזות אחת מתחת לשנייה */
+        .titles {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
         h1 {
             color: var(--heading-color);
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
+            font-size: 2.3rem;
+            margin-bottom: 8px;
         }
 
         h2 {
             color: var(--heading-color);
             font-size: 1.5rem;
-            font-weight: normal;
-            margin-bottom: 40px;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
+            font-weight: 400;
+        }
+
+        .titles span {
+            display: inline-block;
+            vertical-align: middle;
         }
 
         .star-icon {
             color: var(--accent-color);
         }
 
-        /* גוף הטקסט - מיושר לצדדים (לימין) כפי שביקשת */
+        /* גוף הטקסט - יישור לשוליים */
         .content-text {
             font-size: 1.1rem;
             margin-bottom: 25px;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
-            text-align: right; 
+            text-align: justify;
+            text-align-last: right;
         }
 
         .content-text p {
-            margin-bottom: 1.5em; 
+            margin-bottom: 1.5em;
         }
 
         .call-to-action {
             font-weight: 700;
-            margin-top: 40px;
+            margin-top: 20px;
             font-size: 1.2rem;
-            color: var(--text-color); 
+            color: var(--text-color);
         }
     </style>
 </head>
@@ -135,29 +151,32 @@
 
     <div class="top-bar">
         <button id="theme-toggle" aria-label="החלף מצב תצוגה">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
         </button>
     </div>
 
     <div class="container">
+        <!-- תמונת הבובה בראש האתר -->
         <img id="puppet-image" src="7777.jpg" alt="הבובה האדומה של חתולי" class="puppet-image">
 
-        <h1>
-            <span class="star-icon">⭐</span>
-            ברוכים הבאים
-            <span class="star-icon">⭐</span>
-        </h1>
-        <h2>
-            <span class="star-icon">🎓</span>
-            לעמוד של חתולי
-            <span class="star-icon">🎓</span>
-        </h2>
+        <div class="titles">
+            <h1>
+                <span class="star-icon">⭐</span>
+                <span>ברוכים הבאים</span>
+                <span class="star-icon">⭐</span>
+            </h1>
+            <h2>
+                <span class="star-icon">🎓</span>
+                <span>לעמוד של חתולי</span>
+                <span class="star-icon">🎓</span>
+            </h2>
+        </div>
 
         <div class="content-text">
             <p>העמוד נועד כדי להנגיש בעברית את ההתפתחויות והחידושים בעולם הטכנולוגיה והבינה המלאכותית.</p>
-            
             <p>כל כמה ימים אני מעלה לסטורי מקור לקריאה עם פסקה קצרה שמתרגמת ומסכמת איזשהו חידוש. מי שפספס ורוצה להשלים פערים, יוכל לעשות זאת בזכות ההיילייטס, שבהם אני שומר את כל הידיעות שעולות לסטורי גם אחרי שהן נמחקות (מחולק לשנים 2024, 2025).</p>
-            
             <p>בעמוד תוכלו גם למצוא אתרים חינמיים נוחים ומומלצים לשימוש שניסיתי ואהבתי. כדי להיכנס אליהם כל מה שנדרש הוא לכתוב בגוגל את שם האתר שמופיע בתחילת הפוסט שקראתם, להירשם בכניסה לאתר עם חשבון גוגל (חשבון לספאם, לא חשבון לכולם), ואחר כך ישר אפשר כבר להשתמש.</p>
         </div>
 
@@ -167,7 +186,6 @@
     </div>
 
     <script>
-        // --- פונקציונליות מצב כהה ---
         const themeToggleBtn = document.getElementById('theme-toggle');
         const body = document.body;
         const moonIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>';
@@ -200,28 +218,22 @@
             }
         });
 
-        // --- פונקציונליות החלפת תמונות ---
         const puppetImage = document.getElementById('puppet-image');
         const initialImage = '7777.jpg';
         const flickerImage = '7777 - Copy.jpg';
-        const initialDelay = 15000; // 15 שניות
-        const flickerDuration = 200; // 0.2 שניות
+        const initialDelay = 15000;
+        const flickerDuration = 200;
 
         function startFlickerEffect() {
-            // החלף לתמונת הריצוד
             puppetImage.src = flickerImage;
 
-            // החזר לתמונה המקורית לאחר 0.2 שניות
             setTimeout(() => {
                 puppetImage.src = initialImage;
-                // כדי שהאפקט יחזור על עצמו, קרא לפונקציה שוב לאחר השהייה ארוכה יותר
-                setTimeout(startFlickerEffect, 120000); // חוזר על עצמו כל 2 דקות
+                setTimeout(startFlickerEffect, 120000);
             }, flickerDuration);
         }
 
-        // הפעל את האפקט בפעם הראשונה לאחר ההשהייה הראשונית
         setTimeout(startFlickerEffect, initialDelay);
-
     </script>
 </body>
 </html>
