@@ -243,24 +243,12 @@
         const initialImage = '7777.png';
         const flickerImage = '7777 - Copy.png';
 
-        // פונקציה לעיכוב רנדומלי בטווח מסוים
+        // פונקציה לעיכוב רנדומלי לטובת הזום
         function randomDelay(minMs, maxMs) {
             return Math.floor(Math.random() * (maxMs - minMs + 1)) + minMs;
         }
 
-        // ריצוד תמונה: כל 10-20 שניות, מעבר ל-Copy ל־0.2 שניות
-        function scheduleFlicker() {
-            const delay = randomDelay(10000, 20000);
-            setTimeout(() => {
-                puppetImage.src = flickerImage;
-                setTimeout(() => {
-                    puppetImage.src = initialImage;
-                    scheduleFlicker();
-                }, 200); // 0.2 שניות
-            }, delay);
-        }
-
-        // זום עדין: כל 20-30 שניות, גדילה ב־20 אחוז ל־0.2 שניות
+        // זום עדין: כל 20–30 שניות, גדילה ב־20 אחוז ל־0.2 שניות
         function scheduleZoom() {
             const delay = randomDelay(20000, 30000);
             setTimeout(() => {
@@ -272,9 +260,22 @@
             }, delay);
         }
 
+        // אפקט קליק: מעבר ל-copy ל־0.1 שניות
+        let isClickAnimating = false;
+
+        puppetImage.addEventListener('click', () => {
+            if (isClickAnimating) return;
+            isClickAnimating = true;
+
+            puppetImage.src = flickerImage;
+            setTimeout(() => {
+                puppetImage.src = initialImage;
+                isClickAnimating = false;
+            }, 100); // 0.1 שניות
+        });
+
         // התחלה
         puppetImage.src = initialImage;
-        scheduleFlicker();
         scheduleZoom();
     </script>
 </body>
