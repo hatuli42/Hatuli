@@ -13,15 +13,19 @@
             --heading-color: #000000;
             --accent-color: #FFD700;
             --toggle-btn-color: #333;
+            --card-bg: rgba(255, 255, 255, 0.35);
+            --card-shadow: 0 10px 25px rgba(0,0,0,0.18);
         }
 
+        /* מצב כהה מחמיא */
         body.dark-mode {
-            /* מצב כהה */
-            --bg-color: #1a1a2e;
-            --text-color: #e0e0e0;
-            --heading-color: #ffffff;
-            --accent-color: #FFD700;
-            --toggle-btn-color: #FFD700;
+            --bg-color: #1f1412;
+            --text-color: #f4e5d6;
+            --heading-color: #ffe3a5;
+            --accent-color: #ffc857;
+            --toggle-btn-color: #ffc857;
+            --card-bg: rgba(40, 23, 20, 0.9);
+            --card-shadow: 0 10px 28px rgba(0,0,0,0.7);
         }
 
         * {
@@ -65,17 +69,12 @@
             margin: 0 auto;
             padding: 20px 20px 40px;
             border-radius: 18px;
-            background: rgba(255, 255, 255, 0.35);
+            background: var(--card-bg);
             backdrop-filter: blur(6px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+            box-shadow: var(--card-shadow);
         }
 
-        body.dark-mode .container {
-            background: rgba(15, 15, 35, 0.8);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.6);
-        }
-
-        /* תמונת הבובה בראש העמוד */
+        /* תמונת הבובה בראש האתר */
         .puppet-image {
             max-width: 320px;
             width: 100%;
@@ -85,16 +84,16 @@
             border-radius: 18px;
             object-fit: cover;
             filter: drop-shadow(0 10px 15px rgba(0,0,0,0.25));
-            transition: transform 0.35s ease, filter 0.35s ease;
-        }
-
-        .puppet-image:hover {
-            transform: translateY(-4px) scale(1.02);
-            filter: drop-shadow(0 12px 18px rgba(0,0,0,0.3));
+            transition: transform 0.2s ease, filter 0.35s ease;
         }
 
         body.dark-mode .puppet-image {
-            filter: drop-shadow(0 10px 20px rgba(255,255,255,0.12));
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.7));
+        }
+
+        /* קלאס לזום עדין */
+        .puppet-image.puppet-zoom {
+            transform: scale(1.2);
         }
 
         /* כותרות ממורכזות אחת מתחת לשנייה */
@@ -151,7 +150,9 @@
 
     <div class="top-bar">
         <button id="theme-toggle" aria-label="החלף מצב תצוגה">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
             </svg>
         </button>
@@ -159,7 +160,7 @@
 
     <div class="container">
         <!-- תמונת הבובה בראש האתר -->
-        <img id="puppet-image" src="7777.jpg" alt="הבובה האדומה של חתולי" class="puppet-image">
+        <img id="puppet-image" src="7777.png" alt="הבובה האדומה של חתולי" class="puppet-image">
 
         <div class="titles">
             <h1>
@@ -186,10 +187,29 @@
     </div>
 
     <script>
+        // כפתור מצב כהה
         const themeToggleBtn = document.getElementById('theme-toggle');
         const body = document.body;
-        const moonIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>';
-        const sunIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>';
+
+        const moonIcon =
+            '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" ' +
+            'viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
+            'stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
+            '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>';
+
+        const sunIcon =
+            '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" ' +
+            'viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
+            'stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
+            '<circle cx="12" cy="12" r="5"></circle>' +
+            '<line x1="12" y1="1" x2="12" y2="3"></line>' +
+            '<line x1="12" y1="21" x2="12" y2="23"></line>' +
+            '<line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>' +
+            '<line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>' +
+            '<line x1="1" y1="12" x2="3" y2="12"></line>' +
+            '<line x1="21" y1="12" x2="23" y2="12"></line>' +
+            '<line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>' +
+            '<line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>';
 
         function setDarkMode() {
             body.classList.add('dark-mode');
@@ -218,22 +238,44 @@
             }
         });
 
+        // אפקטים לתמונה
         const puppetImage = document.getElementById('puppet-image');
-        const initialImage = '7777.jpg';
-        const flickerImage = '7777 - Copy.jpg';
-        const initialDelay = 15000;
-        const flickerDuration = 200;
+        const initialImage = '7777.png';
+        const flickerImage = '7777 - Copy.png';
 
-        function startFlickerEffect() {
-            puppetImage.src = flickerImage;
-
-            setTimeout(() => {
-                puppetImage.src = initialImage;
-                setTimeout(startFlickerEffect, 120000);
-            }, flickerDuration);
+        // פונקציה לעיכוב רנדומלי בטווח מסוים
+        function randomDelay(minMs, maxMs) {
+            return Math.floor(Math.random() * (maxMs - minMs + 1)) + minMs;
         }
 
-        setTimeout(startFlickerEffect, initialDelay);
+        // ריצוד תמונה: כל 10-20 שניות, מעבר ל-Copy ל־0.2 שניות
+        function scheduleFlicker() {
+            const delay = randomDelay(10000, 20000);
+            setTimeout(() => {
+                puppetImage.src = flickerImage;
+                setTimeout(() => {
+                    puppetImage.src = initialImage;
+                    scheduleFlicker();
+                }, 200); // 0.2 שניות
+            }, delay);
+        }
+
+        // זום עדין: כל 20-30 שניות, גדילה ב־20 אחוז ל־0.2 שניות
+        function scheduleZoom() {
+            const delay = randomDelay(20000, 30000);
+            setTimeout(() => {
+                puppetImage.classList.add('puppet-zoom');
+                setTimeout(() => {
+                    puppetImage.classList.remove('puppet-zoom');
+                    scheduleZoom();
+                }, 200); // 0.2 שניות
+            }, delay);
+        }
+
+        // התחלה
+        puppetImage.src = initialImage;
+        scheduleFlicker();
+        scheduleZoom();
     </script>
 </body>
 </html>
