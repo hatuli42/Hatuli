@@ -3,7 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- טייטל לחלוקה ושיתוף בוואצאפ -->
     <title>⭐ העמוד של חתולי ⭐</title>
+
+    <!-- פביאיקון מהתמונה 7777 בגודל 64x64 -->
+    <link rel="icon" type="image/png" href="7777.png" sizes="64x64">
+
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -91,12 +97,10 @@
             filter: drop-shadow(0 10px 20px rgba(0,0,0,0.7));
         }
 
-        /* קלאס לזום עדין */
         .puppet-image.puppet-zoom {
             transform: scale(1.2);
         }
 
-        /* כותרות ממורכזות אחת מתחת לשנייה */
         .titles {
             text-align: center;
             margin-bottom: 30px;
@@ -123,7 +127,6 @@
             color: var(--accent-color);
         }
 
-        /* גוף הטקסט - יישור לשוליים */
         .content-text {
             font-size: 1.1rem;
             margin-bottom: 25px;
@@ -159,7 +162,6 @@
     </div>
 
     <div class="container">
-        <!-- תמונת הבובה בראש האתר -->
         <img id="puppet-image" src="7777.png" alt="הבובה האדומה של חתולי" class="puppet-image">
 
         <div class="titles">
@@ -187,7 +189,6 @@
     </div>
 
     <script>
-        // כפתור מצב כהה
         const themeToggleBtn = document.getElementById('theme-toggle');
         const body = document.body;
 
@@ -238,17 +239,14 @@
             }
         });
 
-        // אפקטים לתמונה
         const puppetImage = document.getElementById('puppet-image');
         const initialImage = '7777.png';
         const flickerImage = '7777 - Copy.png';
 
-        // פונקציה לעיכוב רנדומלי לטובת הזום
         function randomDelay(minMs, maxMs) {
             return Math.floor(Math.random() * (maxMs - minMs + 1)) + minMs;
         }
 
-        // זום עדין: כל 20–30 שניות, גדילה ב־20 אחוז ל־0.2 שניות
         function scheduleZoom() {
             const delay = randomDelay(20000, 30000);
             setTimeout(() => {
@@ -256,11 +254,10 @@
                 setTimeout(() => {
                     puppetImage.classList.remove('puppet-zoom');
                     scheduleZoom();
-                }, 200); // 0.2 שניות
+                }, 200);
             }, delay);
         }
 
-        // אפקט קליק: מעבר ל-copy ל־0.1 שניות
         let isClickAnimating = false;
 
         puppetImage.addEventListener('click', () => {
@@ -271,13 +268,11 @@
             setTimeout(() => {
                 puppetImage.src = initialImage;
                 isClickAnimating = false;
-            }, 100); // 0.1 שניות
+            }, 100);
         });
 
-        // התחלה
         puppetImage.src = initialImage;
         scheduleZoom();
     </script>
 </body>
 </html>
-
