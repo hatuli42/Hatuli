@@ -133,18 +133,86 @@
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
-            text-align: justify;
-            text-align-last: right;
+            text-align: center;
+            text-align-last: center;
         }
 
         .content-text p {
             margin-bottom: 1.5em;
         }
 
-        /* הפסקה הראשונה ממורכזת אבל נשארת באותו סטייל */
+        /* הפסקה הראשונה נשארת ממורכזת */
         .content-text .intro-paragraph {
             text-align: center;
             text-align-last: center;
+        }
+
+        /* בועה נוספת לקישורים */
+        .bubble {
+            max-width: 800px;
+            margin: 18px auto 0;
+            padding: 18px 20px;
+            border-radius: 18px;
+            background: var(--card-bg);
+            backdrop-filter: blur(6px);
+            box-shadow: var(--card-shadow);
+        }
+
+        .bubble h3 {
+            color: var(--heading-color);
+            font-size: 1.35rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .bubble .bubble-text {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            text-align-last: center;
+        }
+
+        .link-list {
+            list-style: none;
+            padding: 0;
+            margin: 14px auto 0;
+            max-width: 700px;
+        }
+
+        .link-list li {
+            margin: 14px 0;
+        }
+
+        .link-list a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            padding: 10px 14px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.18);
+            transition: transform 0.2s ease, background 0.25s ease;
+        }
+
+        body.dark-mode .link-list a {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .link-list a:hover {
+            transform: scale(1.03);
+            background: rgba(255, 255, 255, 0.28);
+        }
+
+        body.dark-mode .link-list a:hover {
+            background: rgba(255, 255, 255, 0.14);
+        }
+
+        .link-caption {
+            display: block;
+            font-weight: 400;
+            margin-top: 6px;
+            opacity: 0.95;
         }
 
         .call-to-action {
@@ -198,6 +266,27 @@
         <p class="call-to-action">
             שימו עוקב עכשיו ותשמרו לאחר כך, וכמובן גם תשלחו לחברים. 📦
         </p>
+    </div>
+
+    <!-- בועה נוספת (מתוך ה-DOCX) -->
+    <div class="bubble" aria-label="קישורים חשובים">
+        <h3>קישורים חשובים</h3>
+        <div class="bubble-text">
+            <ul class="link-list">
+                <li>
+                    <a href="https://www.youtube.com/@GaonAI" target="_blank" rel="noopener noreferrer">
+                        ערוץ היוטיוב
+                        <span class="link-caption">(סרטוני הסבר, וייבקודינג)</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://chat.whatsapp.com/KI8Z2zOy6c2AZ5ZIHyYeQQ?mode=hqrt2" target="_blank" rel="noopener noreferrer">
+                        קבוצת הווצאפ
+                        <span class="link-caption">(ספר ההומנואידים 2025, רשימת כלים מומלצים מעודכנת)</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
 
     <script>
